@@ -206,6 +206,8 @@ class Management implements LoggerAwareInterface
             $as2headers[$name] = implode(', ', $values);
         }
 
+        $as2headers['Content-Type'] = $receiver->getContentType();
+
         $as2Message = new MimePart($as2headers, $payload->getBody());
 
         $message->setHeaders($as2Message->getHeaderLines());
